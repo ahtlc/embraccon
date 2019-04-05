@@ -1,3 +1,60 @@
-body {
-  background-color: red;
+.screen {
+  font-family: 'Quicksand', sans-serif;
+  height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(45deg, #000B11, #003655);
+}
+
+.container {
+  display: block;
+  height: 70vh;
+  width: 25vw;
+}
+
+.left-box {
+  position: fixed;
+  margin-left: 10vw;
+  margin-top: 15vh;
+  color: #003655;
+  height: 70vh;
+  width: 25vw;
+  background-color: white;
+  border-radius: 10%;
+  display: flex;
+  flex-direction: column;
+}
+
+#embraccon {
+  font-size: 1.5rem;
+  font-weight: 2000;
+  padding-left: 4vw;
+  padding-top: 5vh;
+}
+
+#title {
+  font-size: 2.2rem;
+  padding-left: 4vw;
+  padding-top: 3vh;
+}
+
+#description {
+  font-size: 0.9rem;
+  padding-left: 4vw;
+  padding-top: 5vh;
+  padding-right: 4vw;
+}
+
+#convert {
+  background-color: #003655;
+  color: white;
+  font-size: 1rem;
+  border-radius: 20px;
+  margin-left: 4vw;
+  margin-top: 5vh;
+  height: 4vh;
+  width: 12vw;
+}
+
+.right-box {
+  
 }
