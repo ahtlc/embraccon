@@ -13,6 +13,10 @@ const convertFile = (e) => {
 
 gel('#convert').addEventListener('change', (e) => {
   convertFile(e).then((data) => {
-    console.log(data);
+    const xml = data.split('\n\n')[1];
+    const parser = new DOMParser();  // initialize dom parser
+    const srcDOM = parser.parseFromString(xml, "text/xml");
+    const csv = xmlToJson(srcDOM);
+    console.log(csv);
   });
 });
