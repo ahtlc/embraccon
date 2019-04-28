@@ -13,16 +13,39 @@
   <div class="screen">
     <div class="container">
       <div class="left-box">
-        <h2 id="embraccon">Embraccon</h2>
-        <h1 id="title">Conversor ofx</h1>
-        <p id="description">Insira seu arquivo abaixo e converta de ofx para xls.
+        <h2 class="embraccon">Embraccon</h2>
+        <h1 class="title">Conversor ofx</h1>
+        <p class="description">Insira seu arquivo abaixo e converta de ofx para xls.
           <br>                  
           Após a conversão você poderá realizar o download do arquivo.
         </p>
-        <button type="button" onclick="biggerBox" id="convert">Inserir arquivo</button>
+        <button type="button" onclick="biggerBox" class="convert-btn" id="cvt-btn">Inserir arquivo</button>
       </div>
       <div class="right-box">
-        <object id="curve" type="image/svg+xml" data="Curve.svg"></object>
+        <div class="status-conversion">
+          <div class="converting">
+            <h2 class="converting-text"id="converting">Convertendo</h2>
+            <h2 class="converting-text" id="complete">Conversão concluída</h2>
+            <svg class="load" width="200px"  height="200px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-eclipse" style="background: none;"><path class="load-path" ng-attr-d="{{config.pathCmd}}" ng-attr-fill="{{config.color}}" stroke="none" d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50" fill="#00253b" transform="rotate(209.92 50 51)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 51;360 50 51" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></path></svg>
+          </div>
+          <svg class="curve" 
+          version="1.1"
+          viewBox="0 0 569 435.8"
+          xmlns="http://www.w3.org/2000/svg">
+          
+            <path class="curve-path" 
+              d="m0 0c-1.1842e-14 0 41.205 35.135 54.941 
+              111.07 13.736 75.937-44.834 158.73 0 192.68 
+              46.509 35.214 112.62-15.939 200.65 15.949s75.462 
+              84.273 151.48 111.62c76.022 27.344 161.92-79.316 
+              161.92-79.316v-272.91-9.0859-70h-70-24.943-474.06z"
+            />
+          </svg>
+        </div>
+        <div class="dl-again">
+          <p class="dl-again-text">Caso deseje, baixe novamente</p>
+          <button type="button" onclick="biggerBox" class="convert-btn" id="dl-again-btn">Baixar novamente</button>
+        </div>
       </div>
     </div>
   </div>

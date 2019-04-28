@@ -11,41 +11,42 @@
   width: 25vw;
   padding-left: 10vw;
   padding-top: 15vh;
+  position: relative;
 }
 
 .left-box {
   z-index: 1;
-  position: fixed;
+  position: absolute;
   color: #003655;
   height: 70vh;
   width: 25vw;
   background-color: white;
   display: flex;
   flex-direction: column;
-  border-radius: 20vw;
+  border-radius: 4rem;
 }
 
-#embraccon {
+.embraccon {
   font-size: 1.5rem;
   font-weight: 2000;
   padding-left: 4vw;
   padding-top: 5vh;
 }
 
-#title {
+.title {
   font-size: 2.2rem;
   padding-left: 4vw;
   padding-top: 3vh;
 }
 
-#description {
+.description {
   font-size: 0.9rem;
   padding-left: 4vw;
   padding-top: 5vh;
   padding-right: 4vw;
 }
 
-#convert {
+.convert-btn {
   background: none;
 	color: inherit;
 	border: none;
@@ -57,21 +58,24 @@
   color: white;
   font-size: 1rem;
   border-radius: 20px;
-  margin-left: 4vw;
-  margin-top: 5vh;
   height: 4vh;
   width: 12vw;
   -webkit-transition: 0.2s;
 }
 
-#convert:hover {
+.convert-btn:hover {
   background-color: #005688;
+}
+
+#cvt-btn {
+  margin-left: 4vw;
+  margin-top: 5vh;
 }
 
 .right-box {
   z-index: 0;
   /*display: none !important;*/
-  position: fixed;
+  position: absolute;
   color: #003655;
   height: 70vh;
   width: 75vw;
@@ -79,14 +83,59 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  border-radius: 4vw;
+  border-radius: 4rem;
 }
 
-#curve {
+.curve {
+  position: relative;
+  z-index: 1;
+  margin-left: auto;
   width: 26vw;
-  height: 40vh;
+  border-top-right-radius: 3.6rem;
 }
 
-object {
-  width: 100%;
+.curve-path {
+  fill:#00253b;
+}
+
+.converting {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  right: 8vw;
+  top: 5vh;
+}
+
+.converting-text {
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+#complete {
+  display: none;
+}
+
+.load {
+  width: 4vw;
+  height: 4vw;
+}
+
+.load-path {
+  fill:#ffffff;
+}
+
+.dl-again {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6vh;
+  margin-right: 3.8vw;
+}
+
+.dl-again-text {
+  font-size: 1.2rem;
 }
