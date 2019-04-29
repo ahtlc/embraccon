@@ -46,7 +46,28 @@
   padding-right: 4vw;
 }
 
-.convert-btn {
+input[type='file'] {
+  display: none;
+}
+
+.input-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 4vw;
+  margin-top: 8vh;
+  height: 4vh;
+  width: 8vw;
+  background-color: #003655;
+  border-radius: 20px;
+  -webkit-transition: 0.2s;
+}
+
+.input-wrapper:hover {
+  background-color: #005688;
+}
+
+.input-wrapper label {
   background: none;
 	color: inherit;
 	border: none;
@@ -54,22 +75,8 @@
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
-  background-color: #003655;
   color: white;
-  font-size: 1rem;
-  border-radius: 20px;
-  height: 4vh;
-  width: 12vw;
-  -webkit-transition: 0.2s;
-}
-
-.convert-btn:hover {
-  background-color: #005688;
-}
-
-#cvt-btn {
-  margin-left: 4vw;
-  margin-top: 5vh;
+  font-size: 1.2rem;
 }
 
 .right-box {
