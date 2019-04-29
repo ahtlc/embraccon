@@ -6,7 +6,6 @@
 }
 
 .container {
-  display: block;
   height: 70vh;
   width: 25vw;
   padding-left: 10vw;
@@ -50,25 +49,15 @@ input[type='file'] {
   display: none;
 }
 
-.input-wrapper {
+.input-wrapper label {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: 4vw;
-  margin-top: 8vh;
+  margin-top: 6vh;
   height: 4vh;
   width: 8vw;
   background-color: #003655;
-  border-radius: 20px;
-  -webkit-transition: 0.2s;
-}
-
-.input-wrapper:hover {
-  background-color: #005688;
-}
-
-.input-wrapper label {
-  background: none;
 	color: inherit;
 	border: none;
 	padding: 0;
@@ -76,21 +65,36 @@ input[type='file'] {
 	cursor: pointer;
 	outline: inherit;
   color: white;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  border-radius: 20px;
+  -webkit-transition: 0.2s;
+}
+
+.input-wrapper label:hover {
+  background-color: #005688;
 }
 
 .right-box {
   z-index: 0;
-  /*display: none !important;*/
   position: absolute;
   color: #003655;
   height: 70vh;
-  width: 75vw;
+  width: 25vw;
   background-color: white;
+  display: none;
+  border-radius: 4rem; 
+}
+
+.right-box-transform {
+  -webkit-transition: all 2s ease;  
+  -moz-transition: all 2s ease;  
+  -o-transition: all 2s ease;  
+  -ms-transition: all 2s ease; 
+  transition: all 2s ease;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  border-radius: 4rem;
+  width: 75vw;
 }
 
 .curve {
@@ -105,33 +109,17 @@ input[type='file'] {
   fill:#00253b;
 }
 
-.converting {
+.converting-text {
   position: absolute;
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  right: 8vw;
-  top: 5vh;
-}
-
-.converting-text {
+  right: 4vw;
+  top: 10vh;
   color: #ffffff;
-  font-size: 1.5rem;
-}
-
-#complete {
-  display: none;
-}
-
-.load {
-  width: 4vw;
-  height: 4vw;
-}
-
-.load-path {
-  fill:#ffffff;
+  font-size: 2rem;
 }
 
 .dl-again {
@@ -140,9 +128,29 @@ input[type='file'] {
   align-items: center;
   justify-content: center;
   margin-top: 6vh;
-  margin-right: 3.8vw;
+  margin-right: 4vw;
 }
 
 .dl-again-text {
   font-size: 1.2rem;
+}
+
+#dl-again-btn {
+  height: 4vh;
+  width: 8vw;
+  background-color: #003655;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  color: white;
+  font-size: 1rem;
+  border-radius: 20px;
+  -webkit-transition: 0.2s;
+}
+
+#dl-again-btn:hover {
+  background-color: #005688;
 }
