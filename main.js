@@ -22,7 +22,7 @@ const getNrDoc = (value) => {
 
 const downloadFile = (text) => {
   gel('body').innerHTML += `
-    <a href="data:text/plain;charset=utf-8,${encodeURIComponent(text)}" id="filename-link" download="${file.name.substr(0, file.name.length - 4)}.txt" style="display: none"></a>
+    <a href="data:text/plain;charset=utf-8,${encodeURIComponent(text)}" id="filename-link" download="${file.name.substr(0, file.name.length - 4)}.csv" style="display: none"></a>
   `;
   gel('#filename-link').click();
 }
