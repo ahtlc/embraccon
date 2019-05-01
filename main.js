@@ -45,9 +45,9 @@ gel('#convert').addEventListener('change', (e) => {
     });
     resultAgain = result;
     downloadFile(result);
-    gel('.right-box').classList.add('right-box-transform');
+    document.getElementById('screen-container').classList.add("screen-container-large");
+    document.getElementById('left-label').classList.add("left-label");
     gel('.input-wrapper label').innerText='Inserir outro arquivo';
-    gel('.input-wrapper label').style.width="10vw";
   });
 });
 
