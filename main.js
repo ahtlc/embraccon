@@ -1,5 +1,5 @@
 const gel = selector => document.querySelector(selector);
-let file, resultAgain;
+let file, resultAgain, flag = true;
 
 const convertFile = (element) => {
   file = element.files[0];
@@ -25,14 +25,17 @@ window.convert = (e) => {
       const items = xmlToJson(srcDOM).OFX.BANKMSGSRSV1.STMTTRNRS.STMTRS.BANKTRANLIST.STMTTRN;
       let result = '"Conta";"Data_Mov";"Nr_Doc";"Historico";"Valor";"Deb_Cred"';
       items.forEach((item) => {
-        result += `\n"0050003000008440";"${item.DTPOSTED.substr(0, 8)}";"${getNrDoc(item.FITID)}";"${item.MEMO}";"${item.TRNAMT >= 0 ? parseFloat(item.TRNAMT).toFixed(2) : parseFloat(item.TRNAMT * -1).toFixed(2)}";"${item.TRNTYPE === 'CREDIT' ? 'C' : 'D'}"`;
+        result += `\n"";"${item.DTPOSTED.substr(0, 8)}";"${getNrDoc(item.FITID)}";"${item.MEMO}";"${item.TRNAMT >= 0 ? parseFloat(item.TRNAMT).toFixed(2) : parseFloat(item.TRNAMT * -1).toFixed(2)}";"${item.TRNTYPE === 'CREDIT' ? 'C' : 'D'}"`;
       });
       resultAgain = result;
-      document.getElementById('screen-container').classList.add("screen-container-large");
-      document.getElementById('left-label').classList.add("left-label");
-      gel('.input-wrapper label').innerText = 'Inserir outro arquivo';
       setTimeout(() => {
         downloadFile(result);
+        if(flag) {
+          document.getElementById('screen-container').classList.add("screen-container-large");
+          document.getElementById('left-label').classList.add("left-label");
+          gel('.input-wrapper label').innerText = 'Inserir outro arquivo';
+          flag = false;
+        }
       }, 1500);
     });
   } catch (error) {
