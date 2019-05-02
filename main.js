@@ -29,7 +29,6 @@ window.convert = (e) => {
       });
       resultAgain = result;
       setTimeout(() => {
-        downloadFile(result);
         if(flag) {
           document.getElementById('screen-container').classList.add("screen-container-large");
           document.getElementById('left-label').classList.add("left-label");
