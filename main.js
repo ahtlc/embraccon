@@ -28,12 +28,10 @@ window.convert = (e) => {
         result += `\n"0050003000008440";"${item.DTPOSTED.substr(0, 8)}";"${getNrDoc(item.FITID)}";"${item.MEMO}";"${item.TRNAMT >= 0 ? parseFloat(item.TRNAMT).toFixed(2) : parseFloat(item.TRNAMT * -1).toFixed(2)}";"${item.TRNTYPE === 'CREDIT' ? 'C' : 'D'}"`;
       });
       resultAgain = result;
-      document.getElementById('screen-container').classList.add("screen-container-large");
-      document.getElementById('left-label').classList.add("left-label");
       gel('.input-wrapper label').innerText = 'Inserir outro arquivo';
-      setTimeout(() => {
-        downloadFile(result);
-      }, 1500);
+      document.getElementById('left-label').classList.add("left-label");
+      document.getElementById('screen-container').classList.add("screen-container-large");
+      downloadFile(result);
     });
   } catch (error) {
     console.log(error);
