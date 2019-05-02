@@ -1,8 +1,8 @@
 const gel = selector => document.querySelector(selector);
 let file, resultAgain;
 
-const convertFile = (e) => {
-  file = e.target.files[0];
+const convertFile = (element) => {
+  file = element.files[0];
   return new Promise((resolve) => {
     const reader = new FileReader();
     reader.onload = () => {
@@ -10,6 +10,36 @@ const convertFile = (e) => {
     };
     reader.readAsText(file);
   });
+};
+
+window.downloadAgain = () => {
+  console.log('again');
+  downloadFile();
+};
+
+window.convert = (e) => {
+  console.log('change');
+  try {
+    convertFile(e).then((data) => {
+      const xml = data.split('\n\n')[1];
+      const parser = new DOMParser();  // initialize dom parser
+      const srcDOM = parser.parseFromString(xml, "text/xml");
+      const items = xmlToJson(srcDOM).OFX.BANKMSGSRSV1.STMTTRNRS.STMTRS.BANKTRANLIST.STMTTRN;
+      let result = '"Conta";"Data_Mov";"Nr_Doc";"Historico";"Valor";"Deb_Cred"';
+      items.forEach((item) => {
+        result += `\n"0050003000008440";"${item.DTPOSTED.substr(0, 8)}";"${getNrDoc(item.FITID)}";"${item.MEMO}";"${item.TRNAMT >= 0 ? parseFloat(item.TRNAMT).toFixed(2) : parseFloat(item.TRNAMT * -1).toFixed(2)}";"${item.TRNTYPE === 'CREDIT' ? 'C' : 'D'}"`;
+      });
+      resultAgain = result;
+      document.getElementById('screen-container').classList.add("screen-container-large");
+      document.getElementById('left-label').classList.add("left-label");
+      gel('.input-wrapper label').innerText = 'Inserir outro arquivo';
+      setTimeout(() => {
+        downloadFile(result);
+      }, 1500);
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const getNrDoc = (value) => {
@@ -20,38 +50,10 @@ const getNrDoc = (value) => {
   return result;
 }
 
-const downloadFile = (text) => {
+const downloadFile = (text = resultAgain) => {
   gel('body').innerHTML += `
   <a href="data:text/plain;charset=utf-8,${encodeURIComponent(text)}" id="filename-link" download="${file.name.substr(0, file.name.length - 4)}.csv" style="display: none"></a>
   `;
   gel('#filename-link').click();
+  gel('#filename-link').outerHTML = '';
 }
-
-const downloadAgain = (txt) => {
-  let fileName = gel('#filename-link');
-  fileName.click();
-}
-
-gel('#convert').addEventListener('change', (e) => {
-  convertFile(e).then((data) => {
-    console.log('only once');
-    const xml = data.split('\n\n')[1];
-    const parser = new DOMParser();  // initialize dom parser
-    const srcDOM = parser.parseFromString(xml, "text/xml");
-    const items = xmlToJson(srcDOM).OFX.BANKMSGSRSV1.STMTTRNRS.STMTRS.BANKTRANLIST.STMTTRN;
-    let result = '"Conta";"Data_Mov";"Nr_Doc";"Historico";"Valor";"Deb_Cred"';
-    items.forEach((item) => {
-      result += `\n"0050003000008440";"${item.DTPOSTED.substr(0, 8)}";"${getNrDoc(item.FITID)}";"${item.MEMO}";"${item.TRNAMT >= 0 ? parseFloat(item.TRNAMT).toFixed(2) : parseFloat(item.TRNAMT * -1).toFixed(2)}";"${item.TRNTYPE === 'CREDIT' ? 'C' : 'D'}"`;
-    });
-    resultAgain = result;
-    downloadFile(result);
-    document.getElementById('screen-container').classList.add("screen-container-large");
-    document.getElementById('left-label').classList.add("left-label");
-    gel('.input-wrapper label').innerText='Inserir outro arquivo';
-  });
-});
-
-gel('#dl-again-btn').addEventListener('click', () => {
-    console.log('ha');
-    downloadAgain();
-});

@@ -17,13 +17,13 @@
         <div class="left-box">
           <h2 class="embraccon">Embraccon</h2>
           <h1 class="title">Conversor ofx</h1>
-          <p class="description">Insira seu arquivo abaixo e converta de ofx para xls.
+          <p class="description">Insira seu arquivo abaixo e converta de ofx para csv.
             <br>                  
             Após a conversão, o download do arquivo será iniciado.
           </p>
           <div class="input-wrapper">
             <label id="left-label" for="convert">Inserir arquivo</label>
-            <input type="file" class="convert" id="convert">
+            <input type="file" class="convert" id="convert" onchange="window.convert(this)">
           </div>
         </div>
         <div class="right-box">
@@ -45,7 +45,7 @@
           </div>
           <div class="dl-again">
             <p class="dl-again-text">Caso deseje, baixe novamente</p>
-            <button id="dl-again-btn">Baixar novamente</button>
+            <button id="dl-again-btn" onclick="window.downloadAgain()">Baixar novamente</button>
           </div>
         </div>
       </div>
