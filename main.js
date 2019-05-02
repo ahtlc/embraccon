@@ -13,12 +13,10 @@ const convertFile = (element) => {
 };
 
 window.downloadAgain = () => {
-  console.log('again');
   downloadFile();
 };
 
 window.convert = (e) => {
-  console.log('change');
   try {
     convertFile(e).then((data) => {
       const xml = data.split('\n\n')[1];
