@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="136" height="128" viewBox="0 0 136 128">
+  <defs>
+    <filter id="ofx" x="0" y="0" width="136" height="128" filterUnits="userSpaceOnUse">
+      <feOffset dy="15" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="15" result="blur"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Grupo_5" data-name="Grupo 5" transform="translate(-633 -525)">
+    <g id="Grupo_4" data-name="Grupo 4" transform="translate(0 -3)">
+      <g id="Retângulo_3" data-name="Retângulo 3" transform="translate(673 543)" fill="none" stroke="#003655" stroke-width="1">
+        <rect width="56" height="56" rx="15" stroke="none"/>
+        <rect x="0.5" y="0.5" width="55" height="55" rx="14.5" fill="none"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 633, 528)" filter="url(#ofx)">
+        <text id="ofx-2" data-name="ofx" transform="translate(45 60)" fill="#003655" font-size="30" font-family="Quicksand-Bold, Quicksand" font-weight="700"><tspan x="0" y="0">ofx</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

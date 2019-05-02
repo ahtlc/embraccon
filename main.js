@@ -37,6 +37,7 @@ window.convert = (e) => {
           flag = false;
         }
       }, 1500);
+      downloadFile(result);
     });
   } catch (error) {
     console.log(error);
