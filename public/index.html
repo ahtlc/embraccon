@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="assets/favicon.png" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+  <title>Embraccon Converter</title>
+</head>
+<body>
+  <div class="screen">
+    <div class="screen-container" id="screen-container">
+      <div class="container">
+        <div class="left-box">
+          <h2 class="embraccon">Embraccon</h2>
+          <h1 class="title">Conversor ofx</h1>
+          <p class="description">Insira seu arquivo abaixo e converta de ofx para csv.
+            <br>                  
+            Após a conversão, o download do arquivo será iniciado.
+          </p>
+          <div class="input-wrapper">
+            <label id="left-label" for="convert">Inserir arquivo</label>
+            <input type="file" class="convert" id="convert" onchange="window.convert(this)">
+          </div>
+        </div>
+        <div class="right-box">
+          <div class="status-conversion">
+            <h2 class="converting-text">Conversão concluída</h2>
+            <svg class="curve" 
+            version="1.1"
+            viewBox="0 0 569 435.8"
+            xmlns="http://www.w3.org/2000/svg">
+            
+              <path class="curve-path" 
+                d="m0 0c-1.1842e-14 0 41.205 35.135 54.941 
+                111.07 13.736 75.937-44.834 158.73 0 192.68 
+                46.509 35.214 112.62-15.939 200.65 15.949s75.462 
+                84.273 151.48 111.62c76.022 27.344 161.92-79.316 
+                161.92-79.316v-272.91-9.0859-70h-70-24.943-474.06z"
+              />
+            </svg>
+          </div>
+          <div class="dl-again">
+            <p class="dl-again-text">Caso deseje, baixe novamente</p>
+            <button id="dl-again-btn" onclick="window.downloadAgain()">Baixar novamente</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="xml2json.js"></script>
+  <script src="main.js"></script>
+  <script lang="javascript" src="dist/xlsx.full.min.js"></script>
+</body>
+</html>
