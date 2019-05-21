@@ -23,7 +23,7 @@ window.convert = (e) => {
       const parser = new DOMParser();  // initialize dom parser
       const srcDOM = parser.parseFromString(xml, "text/xml");
       const items = xmlToJson(srcDOM).OFX.BANKMSGSRSV1.STMTTRNRS.STMTRS.BANKTRANLIST.STMTTRN;
-      let result = '"Data";"Conta Contabil";"Historico + Nr_Doc";"Credito";"Debito";"Saldo Final"';
+      let result = '"Data";"Conta Contabil";"Historico + Nr_Doc";"Credito";"Debito";"Saldo"';
       let saldoFinal = 0;
       items.forEach((item) => {
         money = item.TRNAMT >= 0 ? parseFloat(item.TRNAMT).toFixed(2) : parseFloat(item.TRNAMT * -1).toFixed(2);
@@ -31,16 +31,17 @@ window.convert = (e) => {
         usdate = item.DTPOSTED.substr(0, 8);
         brdate = usdate.substr(6,2).concat("/", usdate.substr(4,2), "/", usdate.substr(0,4));
         result += `\n"${brdate}";"";"${item.MEMO}          ${getNrDoc(item.FITID)}";`;
+        console.log(money,saldoFinal);
         if (item.TRNTYPE === 'CREDIT') {
-          result += `"${money}";"";""`;
-          saldoFinal -= money;
+          result += `"${money}";"";"${parseFloat(saldoFinal).toFixed(2)}"`;
+          saldoFinal -= +money;
         }
         else {
-          result += `"";"${money}";""`;
-          saldoFinal += money;
+          result += `"";"${money}";"${parseFloat(saldoFinal).toFixed(2)}"`;
+          saldoFinal += +money;
         }
       });
-      result += `"";"";"";"";"";"${saldoFinal}"`;
+      result += `\n"";"";"";"";"";"${parseFloat(saldoFinal).toFixed(2)}"`;
       resultAgain = result;
       setTimeout(() => {
         if(flag) {
