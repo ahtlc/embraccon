@@ -34,11 +34,11 @@ window.convert = (e) => {
         console.log(money,saldoFinal);
         if (item.TRNTYPE === 'CREDIT') {
           result += `"${money}";"";"${parseFloat(saldoFinal).toFixed(2)}"`;
-          saldoFinal -= +money;
+          saldoFinal += +money;
         }
         else {
           result += `"";"${money}";"${parseFloat(saldoFinal).toFixed(2)}"`;
-          saldoFinal += +money;
+          saldoFinal -= +money;
         }
       });
       result += `\n"";"";"";"";"";"${parseFloat(saldoFinal).toFixed(2)}"`;
